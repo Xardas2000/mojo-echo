@@ -1,0 +1,28 @@
+// Copyright (c) 2020 Mail.Ru Groups Authors. All rights reserved.
+// Owners: i.saneev@corp.mail.ru
+
+module etc.mojom;
+
+enum ClientState {
+  kRead,
+  kWrite,
+};
+
+struct Client {
+  handle? sd;
+  ClientState state;
+};
+
+struct Event {
+  Client? client;
+  string buffer;
+  int32 raw_handle;
+};
+
+interface IPCWorker {
+  GetEvent() => (Event? event);
+
+  PostRead(Event event);
+
+  PostWrite(Event event);
+};
