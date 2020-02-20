@@ -1,6 +1,3 @@
-// Copyright (c) 2020 Mail.Ru Groups Authors. All rights reserved.
-// Owners: i.saneev@corp.mail.ru
-
 #include "etc/examples/mojo/echo_server/poll_mojo.h"
 
 #include <assert.h>

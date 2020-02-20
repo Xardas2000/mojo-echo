@@ -1,6 +1,3 @@
-// Copyright (c) 2020 Mail.Ru Groups Authors. All rights reserved.
-// Owners: i.saneev@corp.mail.ru
-
 #ifndef ETC_EXAMPLES_MOJO_MOJOM_IPC_WORKER_H_
 #define ETC_EXAMPLES_MOJO_MOJOM_IPC_WORKER_H_
 

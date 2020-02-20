@@ -36,7 +36,7 @@ ninja -C out/Debug echo_worker
 Run it
 
 ```
-.\echo_server mojo
+.\echo_server --port=5555 --engine=mojo
 ```
 
 ```

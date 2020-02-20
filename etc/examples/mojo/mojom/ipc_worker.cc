@@ -1,6 +1,3 @@
-// Copyright (c) 2020 Mail.Ru Groups Authors. All rights reserved.
-// Owners: i.saneev@corp.mail.ru
-//
 #include "etc/examples/mojo/mojom/ipc_worker.h"
 
 #include <unistd.h>
