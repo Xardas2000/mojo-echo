@@ -2,7 +2,7 @@
 
 To run it, you need to:
 
-1. Download chromium sources
+1. Download chromium sources https://chromium.googlesource.com/chromium/src/+/master/docs/linux/build_instructions.md
 2. Build it
 3. ...
 4. Profit
