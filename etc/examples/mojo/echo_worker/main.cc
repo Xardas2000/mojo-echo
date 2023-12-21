@@ -9,7 +9,7 @@
 #include "base/message_loop/message_loop_current.h"
 #include "base/threading/platform_thread.h"
 #include "base/threading/thread.h"
-#include "etc/examples/mojo/mojom/bar.mojom.h"
+// #include "etc/examples/mojo/mojom/bar.mojom.h"
 #include "etc/examples/mojo/mojom/ipc_worker.mojom.h"
 #include "mojo/core/embedder/embedder.h"
 #include "mojo/core/embedder/scoped_ipc_support.h"
