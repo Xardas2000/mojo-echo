@@ -216,6 +216,7 @@ int EventLoop::manageConnections()
     for (size_t i = 0; i < disconnected_clients.size(); ++i)
       deleteClient(disconnected_clients[i]);
   }
+
   return 0;
 }
 

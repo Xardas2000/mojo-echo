@@ -1,6 +1,7 @@
 #ifndef ETC_EXAMPLES_MOJO_MOJOM_IPC_WORKER_H_
 #define ETC_EXAMPLES_MOJO_MOJOM_IPC_WORKER_H_
 
+#include "base/memory/raw_ptr.h"
 #include "etc/examples/mojo/mojom/ipc_worker.mojom.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
 #include "mojo/public/cpp/bindings/receiver.h"
@@ -26,7 +27,7 @@ class IPCWorkerImpl : public etc::mojom::IPCWorker {
   IPCWorkerImpl& operator=(const IPCWorkerImpl&) = delete;
 
   mojo::Receiver<etc::mojom::IPCWorker> receiver_;
-  EventLoop* event_loop_;
+  raw_ptr<EventLoop> event_loop_;
 };
 
 }  // namespace etc

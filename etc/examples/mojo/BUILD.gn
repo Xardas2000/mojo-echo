@@ -27,14 +27,16 @@ executable("echo_server") {
     "echo_server/server.h",
     "echo_server/utils.cc",
     "echo_server/utils.h",
-    # "mojom/bar_impl.cc",
-    # "mojom/bar_impl.h",
     "mojom/ipc_worker.cc",
     "mojom/ipc_worker.h",
   ]
 
+  cflags = [
+    "-Wno-error=unreachable-code",
+    "-Wno-error=unreachable-code-return"
+  ]
+
   public_deps = [
-    # ":mojo_example_bar",
     ":mojo_ipc_worker",
     "//base",
     "//mojo/core/embedder",
@@ -46,8 +48,6 @@ executable("echo_server") {
 executable("echo_worker") {
   sources = [
     "echo_worker/main.cc",
-    # "mojom/bar_impl.cc",
-    # "mojom/bar_impl.h",
     "mojom/ipc_worker.cc",
     "mojom/ipc_worker.h",
     "echo_server/poll_mojo.cc",
@@ -56,8 +56,12 @@ executable("echo_worker") {
     "echo_server/engine.h",
   ]
 
+  cflags = [
+    "-Wno-error=unreachable-code",
+    "-Wno-error=unreachable-code-return"
+  ]
+
   public_deps = [
-    # ":mojo_example_bar",
     ":mojo_ipc_worker",
     "//base",
     "//mojo/core/embedder",

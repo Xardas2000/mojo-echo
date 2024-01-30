@@ -4,8 +4,9 @@
 #include <vector>
 
 #include "base/command_line.h"
-#include "base/message_loop/message_loop.h"
 #include "base/process/launch.h"
+#include "base/run_loop.h"
+#include "base/task/single_thread_task_executor.h"
 #include "base/threading/thread.h"
 #include "etc/examples/mojo/mojom/ipc_worker.h"
 #include "mojo/core/embedder/embedder.h"
@@ -54,7 +55,8 @@ int main(int argc, char* argv[]) {
       mojo::core::ScopedIPCSupport::ShutdownPolicy::CLEAN);
 
   // bind our mojom interface
-  std::unique_ptr<base::MessageLoop> message_loop(new base::MessageLoop());
+  base::SingleThreadTaskExecutor executor(base::MessagePumpType::IO);
+  //std::unique_ptr<base::MessageLoop> message_loop(new base::MessageLoop());
   base::RunLoop run_loop;
 
   std::vector<std::unique_ptr<etc::IPCWorkerImpl>> ipc_workers;

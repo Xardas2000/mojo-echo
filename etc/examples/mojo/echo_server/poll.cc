@@ -20,6 +20,7 @@
 #include <string>
 #include <thread>
 #include <vector>
+#include <functional>
 
 #include "poll.h"
 

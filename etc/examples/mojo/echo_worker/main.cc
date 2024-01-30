@@ -2,11 +2,12 @@
 
 #include <unistd.h>
 
-#include "base/bind.h"
 #include "base/command_line.h"
 #include "base/files/scoped_file.h"
-#include "base/message_loop/message_loop.h"
-#include "base/message_loop/message_loop_current.h"
+#include "base/functional/bind.h"
+#include "base/run_loop.h"
+#include "base/task/single_thread_task_executor.h"
+#include "base/time/time.h"
 #include "base/threading/platform_thread.h"
 #include "base/threading/thread.h"
 // #include "etc/examples/mojo/mojom/bar.mojom.h"
@@ -74,7 +75,7 @@ void CheckWork(mojo::Remote<etc::mojom::IPCWorker>* ipc_worker,
 
   task_runner->PostDelayedTask(
       FROM_HERE, base::BindOnce(&CheckWork, ipc_worker, task_runner),
-      base::TimeDelta::FromMilliseconds(30));
+      base::Milliseconds(30));
 }
 
 int main(int argc, char** argv) {
@@ -100,7 +101,8 @@ int main(int argc, char** argv) {
   mojo::ScopedMessagePipeHandle pipe =
       invitation.ExtractMessagePipe("Worker Pipe");
 
-  std::unique_ptr<base::MessageLoop> message_loop(new base::MessageLoop());
+  //std::unique_ptr<base::MessageLoop> message_loop(new base::MessageLoop());
+  base::SingleThreadTaskExecutor executor(base::MessagePumpType::IO);
   base::RunLoop run_loop;
 
   mojo::Remote<etc::mojom::IPCWorker> ipc_worker =
@@ -110,9 +112,9 @@ int main(int argc, char** argv) {
 
   ipc_worker.set_disconnect_handler(base::BindOnce(&OnConnectionError));
 
-  message_loop->task_runner()->PostTask(
+  executor.task_runner()->PostTask(
       FROM_HERE,
-      base::BindOnce(&CheckWork, &ipc_worker, message_loop->task_runner()));
+      base::BindOnce(&CheckWork, &ipc_worker, executor.task_runner()));
 
   run_loop.Run();
 

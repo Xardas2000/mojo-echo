@@ -10,6 +10,7 @@
 #include <iostream>
 #include <thread>
 #include <vector>
+#include <functional>
 
 #include "select.h"
 

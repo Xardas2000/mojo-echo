@@ -1,10 +1,13 @@
-#ifndef ETC_EXAMPLES_MOJO_ECHO_SERVER_POLL_MOJO_H_
-#define ETC_EXAMPLES_MOJO_ECHO_SERVER_POLL_MOJO_H_
+#ifndef ETC_EXAMPLES_MOJO_ECHO_SERVER_POLL_ASYNC_H_
+#define ETC_EXAMPLES_MOJO_ECHO_SERVER_POLL_ASYNC_H_
 
 #include <mutex>
 #include <queue>
 #include <string>
 #include <vector>
+#include <functional>
+
+#include "base/memory/raw_ptr.h"
 
 #include "engine.h"
 
@@ -66,7 +69,7 @@ class Connection : public std::enable_shared_from_this<Connection> {
   std::string m_ReadBuf;
 
   int m_Sd;
-  EventLoop* m_EventLoop;
+  raw_ptr<EventLoop> m_EventLoop;
 };
 
 class AsyncPollEngine : public Engine {

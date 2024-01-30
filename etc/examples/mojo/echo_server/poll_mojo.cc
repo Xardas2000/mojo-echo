@@ -14,6 +14,7 @@
 #include <map>
 #include <utility>
 #include <vector>
+#include <thread>
 
 // browser specific
 #include "base/command_line.h"
